@@ -11,7 +11,7 @@ const Leaderboard = () => {
   const [selectedOption, setSelectedOption] = useState('total');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/leaderBoard').then(res=>{
+    axios.get('https://track-it2.onrender.com/leaderBoard').then(res=>{
       console.log(res.data);
       setCalories(res.data.data)
     }).catch(err=>console.log(err))
@@ -24,14 +24,14 @@ const Leaderboard = () => {
 
   useEffect(() => {
     if (selectedOption === 'weekly') {
-      axios.get('http://localhost:3001/weeklyLeaderBoard').then(res=>{
+      axios.get('https://track-it2.onrender.com/weeklyLeaderBoard').then(res=>{
         setWeek(res.data.data)
         console.log(res.data)
       }).catch(err=>{
         console.log(err)
       })
     } else if (selectedOption === 'monthly') {
-      axios.get('http://localhost:3001/monthlyLeaderBoard').then(res=>{
+      axios.get('https://track-it2.onrender.com/monthlyLeaderBoard').then(res=>{
         setMonth(res.data.data)
         console.log(res.data)
       }).catch(err=>{

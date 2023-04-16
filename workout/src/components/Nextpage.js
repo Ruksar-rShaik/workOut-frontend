@@ -16,7 +16,7 @@ export default function Nextpage(){
     async function submitHandler(e){
         if(!token) navigate("/signIn")
      e.preventDefault();
-     await axios.post("http://localhost:3001/session",{
+     await axios.post("https://track-it2.onrender.com/session",{
         
        workout:location.state.prop.workout,timeDuration:location.state.prop.timeDuration
        

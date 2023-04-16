@@ -14,7 +14,7 @@ export default function SingUP() {
 
   async function submitHandler(e){
     e.preventDefault();
-    await axios.post('http://localhost:3001/signup', {
+    await axios.post('https://track-it2.onrender.com/signup', {
           email, password,name,phone,gender
           
       }).then((res) => {

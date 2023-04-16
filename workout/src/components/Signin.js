@@ -16,7 +16,7 @@ export default function SingIn() {
     
     async function submitHandler(e){
       e.preventDefault();
-      await axios.post("http://localhost:3001/login",{
+      await axios.post("https://track-it2.onrender.com/login",{
         email,password
         
       }).then((res)=>{
@@ -57,6 +57,11 @@ export default function SingIn() {
     </div>
   )
 }
+
+
+
+
+
 
 
 // import React,{ useState } from 'react';

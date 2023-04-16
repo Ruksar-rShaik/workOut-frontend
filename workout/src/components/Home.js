@@ -31,7 +31,7 @@ export default function Homepage() {
     // let [caloriesBurn,setCaloriesBurn]=useState("")
     // let [propsData, setPropsData]=useState("")
 
-   useEffect(()=>{axios.get('http://localhost:3001/getSingleUser',{
+   useEffect(()=>{axios.get('https://track-it2.onrender.com/getSingleUser',{
     headers:{
      "x-api-key":localStorage.getItem("token")
     }
