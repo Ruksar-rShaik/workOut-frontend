@@ -27,11 +27,21 @@ export default function Homepage() {
     const navigate = useNavigate();
     const [data,setData] = useState('')
     const [prop,setProp]=useState("")
+    const token=localStorage.getItem("token")
     // const token=localStorage.getItem("token")
     // let [caloriesBurn,setCaloriesBurn]=useState("")
     // let [propsData, setPropsData]=useState("")
-
-   useEffect(()=>{axios.get('https://track-it2.onrender.com/getSingleUser',{
+    useEffect(()=>{
+      const fetchData =  ()=>{
+          if(!token){
+              navigate('/signin')
+          }    
+      }
+      fetchData()
+  })
+   useEffect(()=>{
+    
+    axios.get('https://track-it2.onrender.com/getSingleUser',{
     headers:{
      "x-api-key":localStorage.getItem("token")
     }
