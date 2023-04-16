@@ -1,0 +1,12 @@
+.img-Running{
+    display: 'flex';
+    flex-direction:"row"
+}
+.btn1{
+   display:"flex";
+   justify-content:"flexstart"
+
+}
+.f{
+    display:inline
+}

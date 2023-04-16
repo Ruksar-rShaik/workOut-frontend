@@ -1,0 +1,95 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 1rem;
+  }
+  
+  .shadow {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .border {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  /* img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-right: 1rem;
+  } */
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  form {
+    position: fixed;
+    top: 7rem;
+    right: 5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+  form button {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+  
+  select {
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    background-color: #007bff;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+  
+  button:active {
+    transform: translateY(0.125rem);
+    box-shadow: none;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .home-container {
+    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Fthumb_back%2Ffh260%2Fbackground%2F20210115%2Fpngtree-beautiful-dreamy-atmosphere-blue-sky-basic-fresh-sky-white-cloud-background-image_524668.jpg&tbnid=OIThWq4QkHvmtM&vet=12ahUKEwjni8Ddta7-AhWCSHwKHSOoBBIQMygIegUIARCfAQ..i&imgrefurl=https%3A%2F%2Fpngtree.com%2Ffree-backgrounds-photos%2Fbasic&docid=q9GuJmWClEj1PM&w=195&h=261&itg=1&ved=2ahUKEwjni8Ddta7-AhWCSHwKHSOoBBIQMygIegUIARCfAQ');
+    background-size: cover;
+    background-position: center;
+  }
+  
