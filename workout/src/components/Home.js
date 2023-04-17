@@ -119,9 +119,8 @@ export default function Homepage() {
    
   
   return (
-
-    <div className='row'    
-    style={{ backgroundImage: `url(${bckimg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+<div style={{ backgroundImage: `url(${bckimg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover',backgroundPosition: 'center',height:"40rem"}}>
+    <div className='row'>
       {data.length !== 0 ? (
         <div>
           {data.map((ssn) => (
@@ -203,6 +202,7 @@ export default function Homepage() {
           </form>
           </div>
 
+            </div>
             </div>
           );
           }
