@@ -7,6 +7,7 @@ import SignUP from './components/Signup';
 import SignIn from "./components/Signin";
 import LeaderBoard from "./components/Leaderboard";
 import Nextpage from './components/Nextpage';
+import Recommend from './components/Recommend';
 function App() {
   return (
   <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
         <Route path ="/signIn" element={<SignIn/>}></Route>
         <Route path='/leaderBoard' element={<LeaderBoard/>}></Route>
         <Route path='/nextpage' element={<Nextpage/>}></Route>
+        <Route path='/recommend' element={<Recommend/>}></Route>
       </Routes>
     </div>
     </BrowserRouter>

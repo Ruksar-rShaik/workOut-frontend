@@ -15,7 +15,7 @@ import axios from 'axios'
 import bckimg from "../Img/bckimage.jfif"
 import Moment from 'react-moment';
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 
 
@@ -119,7 +119,7 @@ export default function Homepage() {
    
   
   return (
-<div style={{ backgroundImage: `url(${bckimg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover',backgroundPosition: 'center',height:"40rem"}}>
+<div style={{ backgroundImage: `url(${bckimg})`,  backgroundSize: 'cover',backgroundPosition: 'center',height:"40rem"}}>
     <div className='row'>
       {data.length !== 0 ? (
         <div>
@@ -152,8 +152,16 @@ export default function Homepage() {
       ) : (
         <h1 style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'start', color: '#555' }}>No Sessions Added</h1>
       )}
-  
-      <div style={{ position: 'fixed', top: '10rem', left: '20rem', zIndex: 100 }}>
+      <div style={{ marginTop: '-55vh', marginLeft:"85vh"}}>
+
+     
+        <h5>Want some Recommendations </h5>
+        <Link to="/Recommend">
+        <h5>Click here </h5>
+        </Link>
+        
+      </div>
+      <div style={{ position: 'fixed', top: '12rem', left: '20rem', zIndex: 100 }}>
         <form>
           <option></option>
           <select
