@@ -52,7 +52,7 @@ console.log(email, password);
             <input type = "phone" name= "phone" id="phone"  value={phone} placeholder='phone' onChange={(e)=>{setPhone(e.target.value)}}/>
           </div>
           <button onClick={submitHandler}>Submit</button>
-          {/* <Button variant="contained">Contained</Button> */}
+          
 
         </div>
         <div className='form2'>
