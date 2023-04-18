@@ -16,6 +16,8 @@ import bckimg from "../Img/bckimage.jfif"
 import Moment from 'react-moment';
 import { Button } from "react-bootstrap";
 import { useNavigate,Link } from "react-router-dom";
+import { AiOutlineDelete } from 'react-icons/ai';
+
 
 
 
@@ -26,7 +28,7 @@ export default function Homepage() {
     const[timeDuration,settimeDuration]=useState("")
     const navigate = useNavigate();
     const [data,setData] = useState('')
-    const [prop,setProp]=useState("")
+    //const [prop,setProp]=useState("")
     const token=localStorage.getItem("token")
     // const token=localStorage.getItem("token")
     // let [caloriesBurn,setCaloriesBurn]=useState("")
@@ -41,21 +43,34 @@ export default function Homepage() {
   })
    useEffect(()=>{
     
-    axios.get('https://track-it2.onrender.com/getSingleUser',{
+    axios.get('http://localhost:3001/getSingleUser',{
     headers:{
      "x-api-key":localStorage.getItem("token")
     }
   }
   ).then(res=>{ console.log(res);
      setData(res.data.data)}).catch(err=>console.log(err))
-},[]
-   )
+},[])
 
    const handleReset = () => {
     settimeDuration('');
     setWorkout("")
   }
-  
+  async function delHandler(ssnId) {
+    try {
+      alert("do you want to delete")
+      await axios.delete(`http://localhost:3001/deleteSsn/${ssnId}`, {
+        headers: {
+          "x-api-key": localStorage.getItem("token"),
+        },
+        
+      });
+      setData((prevData) => prevData.filter((ssn) => ssn._id !== ssnId));
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
 
   function goToNextPage(){
   
@@ -119,40 +134,25 @@ export default function Homepage() {
    
   
   return (
-<div style={{ backgroundImage: `url(${bckimg})`,  backgroundSize: 'cover',backgroundPosition: 'center',height:"40rem"}}>
+<div style={{ backgroundImage: `url(${bckimg})`, backgroundSize: 'cover', backgroundRepeat: "repeat",backgroundPosition: 'center',height:"auto"}}>
     <div className='row'>
       {data.length !== 0 ? (
         <div>
-          {data.map((ssn) => (
-            <div className='col-3 shadow p-3 my-2 border' style={{ backgroundColor: '#ADD8E6', borderRadius: '8px', boxShadow: '0px 5px 20px rgba(0, 0, 0, 0.2)' }}>
-              <div className='d-flex'>
-                <div className='me-2'>
-                  <img
-                    src={getImage(ssn.workout)}
-                    alt={ssn.workout}
-                    style={{ height: '10rem', width: '10rem', objectFit: 'cover', borderRadius: '50%' }}
-                  />
-                </div>
-                <div>
-                  <h5 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                    <Moment format='DD/MM/YYYY'>{ssn.date}</Moment>
-                  </h5>
-                  <h5 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>{ssn.workout}</h5>
-                  <div>
-                    <h5 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}> Time Duration: {ssn.timeDuration} minutes</h5>
-                  </div>
-                  <div>
-                    <p style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Total Calories Burnt: {ssn.totalCaloriesBurn}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+      {data.map((ssn) => (
+  <div key={ssn._id} className='col-3 shadow p-3 my-2 border' style={{ backgroundColor: '#ADD8E6', borderRadius: '8px', boxShadow: '0px 5px 20px rgba(0, 0, 0, 0.1)' }}>
+    <img src={getImage(ssn.workout)} alt='' width='100%' height='auto' style={{ borderRadius: '8px' }} />
+    <h4>{ssn.workout}</h4>
+    <p><Moment format='MMMM Do YYYY, h:mm a'>{ssn.date}</Moment></p>
+    <p>{ssn.timeDuration} minutes</p>
+    <Button variant='danger' onClick={() => delHandler(ssn._id)}><AiOutlineDelete/></Button>
+  </div>
+))}
+
         </div>
       ) : (
         <h1 style={{ fontWeight: 'bold', display: 'flex', justifyContent: 'start', color: '#555' }}>No Sessions Added</h1>
       )}
-      <div style={{ marginTop: '-55vh', marginLeft:"85vh"}}>
+      <div style={{ marginTop: '2vh', marginLeft:"85vh", position:'fixed'}}>
 
      
         <h5>Want some Recommendations </h5>
@@ -224,7 +224,26 @@ export default function Homepage() {
 
 
 
+          // async function delHandler(ssnId) {
+          //   try {
+          //     await axios.delete(`http://localhost:3001/deleteSsn/${ssnId}`, {
+          //       headers: {
+          //         "x-api-key": localStorage.getItem("token"),
+          //       },
+          //     });
+          //     setData((prevData) => prevData.filter((ssn) => ssn._id !== ssnId));
+          //   } catch (err) {
+          //     console.log(err.message);
+          //   }
+          // }
 
+          // <Button
+          //         className="del"
+          //         style={{ marginTop: "-2rem" }}
+          //         onClick={() => delHandler(ssn._id)}
+          //       >
+          //         Del
+          //       </Button>
 
 
 

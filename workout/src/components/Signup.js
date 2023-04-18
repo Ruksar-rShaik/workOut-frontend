@@ -1,4 +1,4 @@
-import React ,{useState}from 'react';
+import React ,{useState,useEffect}from 'react';
 import "./Signup.css"
 import { Link ,useNavigate} from 'react-router-dom';
 import axios from "axios"
@@ -11,6 +11,12 @@ export default function SingUP() {
   const [email,setEmail]=useState(""); 
   const [password,setPassword]=useState("");
   const [phone,setPhone]=useState("");
+
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+      Navigate("/")
+    }
+  })
 
   async function submitHandler(e){
     e.preventDefault();

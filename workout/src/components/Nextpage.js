@@ -33,7 +33,7 @@ export default function Nextpage(){
     }
     return(
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {caloriesBurn?<h3 style={{color:"#8A2BE2","font-family": "Arial","margin-top": "8px"}}>CaloriesBurnt={caloriesBurn} <br/> </h3>:<Button type='submit' onClick={submitHandler} style={{marginTop: "20px"}}>Save</Button>} &nbsp;
+            {caloriesBurn?<h3 style={{color:"#8A2BE2",fontFamily: "Arial",marginTop: "8px"}}>CaloriesBurnt={caloriesBurn} <br/> </h3>:<Button type='submit' onClick={submitHandler} style={{marginTop: "20px"}}>Save</Button>} &nbsp;
             <Button type="submit" onClick={(e)=>navigate("/")}> GoBack</Button>
             
             <img style={{  margin: "-10px 0 0 0" ,marginTop: "-100px", alignSelf: 'flex-end', marginBottom: "-20px" } } src={Img} alt="Home"/>

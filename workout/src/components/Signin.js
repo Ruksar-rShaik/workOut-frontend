@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Signin.css";
 import { Link, useNavigate} from 'react-router-dom';
 import axios from "axios"
@@ -12,7 +12,11 @@ export default function SingIn() {
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
     //const[token,seToken]=useState("")
-
+useEffect(()=>{
+  if(localStorage.getItem("token")){
+    Navigate("/")
+  }
+})
     
     async function submitHandler(e){
       e.preventDefault();
