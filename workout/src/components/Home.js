@@ -75,8 +75,8 @@ export default function Homepage() {
   }
 
 
-  function goToNextPage(){
-  
+  function goToNextPage(e){
+  e.preventDefault()
     const state={
       prop:{workout,timeDuration}
       
