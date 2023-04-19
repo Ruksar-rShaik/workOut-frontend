@@ -24,7 +24,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     if (selectedOption === 'weekly') {
-      axios.get('http://track-it2.onrender.com/weeklyLeaderBoard').then(res=>{
+      axios.get('https://track-it2.onrender.com/weeklyLeaderBoard').then(res=>{
         setWeek(res.data.data)
         console.log(res.data)
       }).catch(err=>{
