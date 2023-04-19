@@ -28,6 +28,7 @@ export default function Homepage() {
     const[timeDuration,settimeDuration]=useState("")
     const navigate = useNavigate();
     const [data,setData] = useState('')
+    const[popup, setPopup]=useState("")
     //const [prop,setProp]=useState("")
     const token=localStorage.getItem("token")
     // const token=localStorage.getItem("token")
@@ -43,7 +44,7 @@ export default function Homepage() {
   })
    useEffect(()=>{
     
-    axios.get('http://localhost:3001/getSingleUser',{
+    axios.get('https://track-it2.onrender.com/getSingleUser',{
     headers:{
      "x-api-key":localStorage.getItem("token")
     }
@@ -56,10 +57,12 @@ export default function Homepage() {
     settimeDuration('');
     setWorkout("")
   }
+
+
   async function delHandler(ssnId) {
     try {
       alert("do you want to delete")
-      await axios.delete(`http://localhost:3001/deleteSsn/${ssnId}`, {
+      await axios.delete(`https://track-it2.onrender.com/deleteSsn/${ssnId}`, {
         headers: {
           "x-api-key": localStorage.getItem("token"),
         },
@@ -134,7 +137,7 @@ export default function Homepage() {
    
   
   return (
-<div style={{ backgroundImage: `url(${bckimg})`, backgroundSize: 'cover', backgroundRepeat: "repeat",backgroundPosition: 'center',height:"auto"}}>
+<div style={{ backgroundImage: `url(${bckimg})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat",height:"auto"}}>
     <div className='row'>
       {data.length !== 0 ? (
         <div>
@@ -143,6 +146,7 @@ export default function Homepage() {
     <img src={getImage(ssn.workout)} alt='' width='100%' height='auto' style={{ borderRadius: '8px' }} />
     <h4>{ssn.workout}</h4>
     <p><Moment format='MMMM Do YYYY, h:mm a'>{ssn.date}</Moment></p>
+    <h5>TotalCaloriesBurn {ssn.totalCaloriesBurn}</h5>
     <p>{ssn.timeDuration} minutes</p>
     <Button variant='danger' onClick={() => delHandler(ssn._id)}><AiOutlineDelete/></Button>
   </div>
