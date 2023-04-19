@@ -4,7 +4,10 @@ import { Button } from "react-bootstrap"
 import {useNavigate,useLocation} from "react-router-dom"
 import Img from "../Img/homeImg.jpeg"
 
-
+useEffect(()=>{
+    if(!localStorage.getItem("token"))
+    navigate("/signIn")
+})
 export default function Nextpage(){
     const location=useLocation()
     console.log(location.state.prop)
