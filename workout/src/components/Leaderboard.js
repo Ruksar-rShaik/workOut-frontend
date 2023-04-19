@@ -5,6 +5,10 @@ import "./Leadeboard.css"
 
 
 const Leaderboard = () => {
+  if(!localStorage.getItem("token")){
+      navigate("/signIn")
+      return
+    }
   const [calories, setCalories] = useState([]);
   const [week, setWeek] = useState([])
   const [month, setMonth] = useState([])
