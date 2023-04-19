@@ -5,16 +5,18 @@ import "./Leadeboard.css"
 
 
 const Leaderboard = () => {
-  if(!localStorage.getItem("token")){
-      navigate("/signIn")
-      return
-    }
   const [calories, setCalories] = useState([]);
   const [week, setWeek] = useState([])
   const [month, setMonth] = useState([])
   const [selectedOption, setSelectedOption] = useState('total');
+  
+  
 
   useEffect(() => {
+    if(!localStorage.getItem("token")){
+      navigate("/signIn")
+      return
+    }
     axios.get('https://track-it2.onrender.com/leaderBoard').then(res=>{
       console.log(res.data);
       setCalories(res.data.data)
