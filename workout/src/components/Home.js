@@ -28,7 +28,7 @@ export default function Homepage() {
     const[timeDuration,settimeDuration]=useState("")
     const navigate = useNavigate();
     const [data,setData] = useState('')
-    const[popup, setPopup]=useState("")
+   
     //const [prop,setProp]=useState("")
     const token=localStorage.getItem("token")
     // const token=localStorage.getItem("token")

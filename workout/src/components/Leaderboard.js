@@ -1,16 +1,163 @@
 
+// import axios from 'axios';
+// import React, { useState, useEffect } from 'react';
+// import "./Leadeboard.css"
+// import { useNavigate } from 'react-router-dom';
+// import "./Navbar"
+
+
+// const Leaderboard = () => {
+//   const navigate= useNavigate()
+//   const [calories, setCalories] = useState([]);
+//   const [week, setWeek] = useState([])
+//   const [month, setMonth] = useState([])
+//   const [selectedOption, setSelectedOption] = useState('total');
+  
+  
+
+//   useEffect(() => {
+//     if(!localStorage.getItem("token")){
+//       navigate("/signIn")
+//       return
+//     }
+//     axios.get('https://track-it2.onrender.com/leaderBoard').then(res=>{
+//       console.log(res.data);
+//       setCalories(res.data.data)
+//     }).catch(err=>console.log(err))
+
+//   }, []);
+
+//   function handleOptionChange(changeEvent) {
+//     setSelectedOption(changeEvent.target.value);
+//   }
+
+//   useEffect(() => {
+//     if (selectedOption === 'weekly') {
+//       axios.get('https://track-it2.onrender.com/weeklyLeaderBoard').then(res=>{
+//         setWeek(res.data.data)
+//         console.log(res.data)
+//       }).catch(err=>{
+//         console.log(err)
+//       })
+//     } else if (selectedOption === 'monthly') {
+//       axios.get('https://track-it2.onrender.com/monthlyLeaderBoard').then(res=>{
+//         setMonth(res.data.data)
+//         console.log(res.data)
+//       }).catch(err=>{
+//         console.log(err)
+//       })
+//     }
+//   }, [selectedOption]);
+
+//   return (
+//     <>
+//       <form>
+//         <div >
+//         <label>
+//             <input type="radio" value="total" checked={selectedOption === 'total'} onChange={handleOptionChange} />
+//             Lifetime
+//           </label>
+//           <label>
+//             <input type="radio" value="weekly" checked={selectedOption === 'weekly'} onChange={handleOptionChange} />
+//             Weekly
+//           </label>
+//           <label>
+//             <input type="radio" value="monthly" checked={selectedOption === 'monthly'} onChange={handleOptionChange} />
+//             Monthly
+//           </label>
+//         </div>
+//       </form>
+
+//       {selectedOption === 'total' && (
+//         <table className="table">
+//           <thead>
+//             <tr>
+//               <th>Sl.No</th>
+//               <th>Name</th>
+//               <th>Total Calories Burned</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {calories ? calories.map((person,index) => (
+//               <tr key={person.name}>
+//                 <td>{index+1}</td>
+//                 <td>{person.name}</td>
+//                 <td>{person.caloriesBurnTillNow}</td>
+//               </tr>
+//             )) : <tr><td>Loading...</td></tr>}
+//           </tbody>
+//         </table>
+//       )}
+
+//       {selectedOption === 'weekly' && (
+//         <table className="table">
+//           <thead>
+//             <tr>
+//             <th>Sl.No</th>
+//               <th>Name</th>
+//               <th>Calories Burned This Week</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {week ? week.map((person,index) => (
+//               <tr key={person.name}>
+//                 <td>{index+1}</td>
+//                 <td>{person.userName}</td>
+//                 <td>{person.totalCaloriesBurned}</td>
+//               </tr>
+//             )) : <tr><td>Loading...</td></tr>}
+//           </tbody>
+//         </table>
+//       )}
+
+//       {selectedOption === 'monthly' && (
+//         <table className="table">
+//           <thead>
+//             <tr>
+//             <th>Sl.No</th>
+//               <th>Name</th>
+//               <th>Total Calories Burned This Month</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {month ? month.map((person,index) => (
+//               <tr key={person.name}>
+//                 <td>{index+1}</td>
+//                 <td>{person.name}</td>
+//                 <td>{person.totalCaloriesBurned}</td>
+//               </tr>
+//                )) : <tr><td>Loading...</td></tr>}
+//                </tbody>
+//              </table>
+//            )}
+//            </>
+//   )
+//             }
+
+
+//             export default Leaderboard;
+
+
+//git
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import "./Leadeboard.css"
+import { useNavigate } from 'react-router-dom';
 
 
 const Leaderboard = () => {
   const [calories, setCalories] = useState([]);
   const [week, setWeek] = useState([])
   const [month, setMonth] = useState([])
-  const [selectedOption, setSelectedOption] = useState('total');
-  
-  
+  //const [selectedOption, setSelectedOption] = useState('total');
+  const navigate= useNavigate()
+  const [selectedOption, setSelectedOption] = useState(
+    localStorage.getItem("selectedOption") || "total"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selectedOption", selectedOption);
+  }, [selectedOption]);
 
   useEffect(() => {
     if(!localStorage.getItem("token")){
@@ -68,11 +215,37 @@ const Leaderboard = () => {
       {selectedOption === 'total' && (
         <table className="table">
           <thead>
-            <tr>
+            {/* <tr>
               <th>Sl.No</th>
               <th>Name</th>
               <th>Total Calories Burned</th>
-            </tr>
+            </tr> */}
+             <tr>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Sl.No
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Name
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Total Calories Burned
+          </th>
+        </tr>
           </thead>
           <tbody>
             {calories ? calories.map((person,index) => (
@@ -89,11 +262,37 @@ const Leaderboard = () => {
       {selectedOption === 'weekly' && (
         <table className="table">
           <thead>
-            <tr>
+            {/* <tr>
             <th>Sl.No</th>
               <th>Name</th>
               <th>Calories Burned This Week</th>
-            </tr>
+            </tr> */}
+             <tr>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Sl.No
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Name
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+           Total Calories Burned This Week
+          </th>
+        </tr>
           </thead>
           <tbody>
             {week ? week.map((person,index) => (
@@ -110,11 +309,37 @@ const Leaderboard = () => {
       {selectedOption === 'monthly' && (
         <table className="table">
           <thead>
-            <tr>
+            {/* <tr>
             <th>Sl.No</th>
               <th>Name</th>
               <th>Total Calories Burned This Month</th>
-            </tr>
+            </tr> */}
+             <tr>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Sl.No
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Name
+          </th>
+          <th
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "white"
+            }}
+          >
+            Total Calories Burned This Month
+          </th>
+        </tr>
           </thead>
           <tbody>
             {month ? month.map((person,index) => (
@@ -133,6 +358,7 @@ const Leaderboard = () => {
 
 
             export default Leaderboard;
+
 
 
 

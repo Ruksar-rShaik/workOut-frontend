@@ -4,13 +4,23 @@
   justify-content: flex-end;
   align-items: center;
   margin-top: 10px;
-  background-color: antiquewhite;
+  background-color: rgba(55, 73, 73, 0.805);
   /* box-shadow: 1px 5px 5px hsla(310, 69%, 51%, 0.863); */
 }
 
-.nav-menu{
-    display:flex
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logout-btn {
+    margin-left: auto;
+  }
+
+.nav-button {
+  margin-left: 10px;
 }
+
 
 a{
     text-decoration: none;
@@ -39,4 +49,5 @@ li {
   
   .logout-btn:hover {
     background-color: #e53935;
+
   }

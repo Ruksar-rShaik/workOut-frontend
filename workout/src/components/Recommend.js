@@ -1,43 +1,75 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './Recommend.css';
 
 export default function Recommend() {
+  const [targetCalories, setTargetCalories] = useState('');
+  const [timeDuration, setTimeDuration] = useState('');
+  const [workout, setWorkout] = useState('');
+  const navigate = useNavigate();
 
- const [targetCalories,setTargetCalories] = useState('')
- const [timeDuration,setTimeDuration] = useState('')
- const [workout, setWorkout]=useState("")
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  function handleSubmit(e){
-    
-    e.preventDefault()
-    
-    axios.post('https://track-it2.onrender.com/SugstWorkout',{
-        timeDuration,targetCalories,
-   },{ 
-    headers:{
-            "x-api-key":localStorage.getItem("token")
-           }
-    }).then((res)=>{
-        console.log(res.data)
+    axios
+      .post(
+        'https://track-it2.onrender.com/SugstWorkout',
+        {
+          timeDuration,
+          targetCalories,
+        },
+        {
+          headers: {
+            'x-api-key': localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
 
-        setWorkout(res.data.data.workout)
-    })
-    .catch((err)=>console.log(err.response.data))
+        setWorkout(res.data.data.workout);
+      })
+      .catch((err) => console.log(err.response.data));
   }
 
-
   return (
-
-    <div className='m-5'> 
- 
-       <input className= 'w-25' type="number" name="targetCalories" id="targetCalories"  placeholder='targetCalories' onChange={(e)=>setTargetCalories(e.target.value)}/>
-       <br/>
-       <input className= 'w-25' type="number" name="timeDuration" id="timeDuration" placeholder='enter timeDuration in minutes' onChange={(e)=>setTimeDuration(e.target.value)}/>
-<br/> <br/>
-      <Button type="submit" onClick={handleSubmit}>Submit</Button> &nbsp; &nbsp;
-<br/><br/>
-      {workout?<h3>Best workout to burn {targetCalories} calories is {workout} </h3>:<h3> </h3>}
+    <div className="recommend-page">
+      <div className="recommend-form-container">
+        <form className="recommend-form">
+          <input
+            className="recommend-input"
+            type="number"
+            name="targetCalories"
+            id="targetCalories"
+            placeholder="Enter Target Calories"
+            style={{width:"20rem"}}
+            onChange={(e) => setTargetCalories(e.target.value)}
+          />
+          
+          <input
+            className="recommend-input"
+            type="number"
+            name="timeDuration"
+            id="timeDuration"
+            placeholder="Enter Time Duration in Minutes"
+            style={{width:"20rem"}}
+            onChange={(e) => setTimeDuration(e.target.value)}
+          />
+          <Button type="submit" onClick={handleSubmit} className="recommend-button">
+            Submit
+          </Button>
+          <Button type="submit" onClick={() => navigate('/')} className="recommend-button">
+            Go Back
+          </Button>
+        </form>
+        {workout && (
+          <h3 className="recommend-result">
+            Best workout to burn {targetCalories} calories in {timeDuration} minutes is {workout}
+          </h3>
+        )}
+      </div>
     </div>
-  )
+  );
 }

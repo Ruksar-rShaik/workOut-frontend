@@ -1,20 +1,18 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import axios from "axios"
 import { Button } from "react-bootstrap"
 import {useNavigate,useLocation} from "react-router-dom"
 import Img from "../Img/homeImg.jpeg"
 
-useEffect(()=>{
-    if(!localStorage.getItem("token"))
-    navigate("/signIn")
-})
+
 export default function Nextpage(){
-    const location=useLocation()
-    console.log(location.state.prop)
+    
     const token=localStorage.getItem("token")
     let [caloriesBurn,setCaloriesBurn]=useState("")
     const navigate=useNavigate()
 
+   
+    const location=useLocation()
     
     async function submitHandler(e){
         if(!token) navigate("/signIn")
