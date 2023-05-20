@@ -323,6 +323,7 @@ const Leaderboard = () => {
           >
             Sl.No
           </th>
+          
           <th
             style={{
               backgroundColor: "#4CAF50",

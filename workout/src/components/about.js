@@ -23,7 +23,7 @@ function About() {
                         our app has got you covered. Join us today and start tracking your way to a healthier lifestyle!
                             
                         </p><br/>
-                        <a class="btn btn-primary btn-xl" href="/start">Home</a>
+                        <a class="btn btn-primary btn-xl" href="/">Home</a>
                         
                     </Col>
                 </Row>

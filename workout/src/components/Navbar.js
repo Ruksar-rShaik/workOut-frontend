@@ -19,7 +19,7 @@ export default function Navbar() {
   function handleLogout() {
     if (localStorage.getItem('token') !== null) {
       localStorage.removeItem('token');
-      Navigate("/start")
+      Navigate("/")
       setIsLoggedIn(false);
     }
   }
@@ -29,7 +29,7 @@ export default function Navbar() {
   <ul className="nav-menu">
     {isLoggedIn ?
       <li>
-        <Link to="/">
+        <Link to="/home">
           <Button className="nav-button" style={{backgroundColor:"#19edca"}}>Home</Button>
         </Link> &nbsp;
         <Link to="/leaderBoard">

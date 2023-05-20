@@ -15,7 +15,7 @@ import {useLocation} from "react-router-dom"
 function Navba(props) {
   const location = useLocation();
   console.log("Current pathname:", location.pathname);
-  const shouldRenderNavbar = ["/", "/leaderBoard", "/nextpage", "/Recommend"].includes(location.pathname);
+  const shouldRenderNavbar = ["/home", "/leaderBoard", "/nextpage", "/Recommend"].includes(location.pathname);
   return shouldRenderNavbar ? (
     <nav>
       <Navbar/> 
@@ -33,13 +33,13 @@ function App() {
      
     <Navba/> 
       <Routes>
-       <Route path ="/" element={<Homepage/>}></Route> 
+       <Route path ="/" element={<StartPage/>}></Route> 
         <Route path ="/signUP" element={<SignUP/>}></Route>
         <Route path ="/signIn" element={<SignIn/>}></Route>
         <Route path='/leaderBoard' element={<LeaderBoard/>}></Route>
         <Route path='/nextpage' element={<Nextpage/>}></Route>
         <Route path='/recommend' element={<Recommend/>}></Route>
-        <Route path='/start' element={<StartPage/>}></Route>
+        <Route path='/home' element={<Homepage/>}></Route>
         <Route path='/about' element={<About/>}></Route>
       </Routes>
     </div>

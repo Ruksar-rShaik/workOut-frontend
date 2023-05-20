@@ -15,7 +15,7 @@ export default function Signup() {
     //const[token,seToken]=useState("")
 useEffect(()=>{
   if(localStorage.getItem("token")){
-    Navigate("/")
+    Navigate("/home")
   }
 })
 
@@ -31,7 +31,7 @@ async function submitHandler(e){
     
     localStorage.setItem("token",res.data.token)
     //alert("sucessful")
-    Navigate("/")
+    Navigate("/home")
   }).catch((err)=>{
     console.log(err.response.data)
     alert(err.response.data.message)

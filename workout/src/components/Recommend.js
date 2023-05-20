@@ -60,7 +60,7 @@ export default function Recommend() {
           <Button type="submit" onClick={handleSubmit} className="recommend-button">
             Submit
           </Button>
-          <Button type="submit" onClick={() => navigate('/')} className="recommend-button">
+          <Button type="submit" onClick={() => navigate('/home')} className="recommend-button">
             Go Back
           </Button>
         </form>
